@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   resources :widgets
-
+  get ':controller(/:action(/:id))'
+  root :to => 'say#hello'
+  post '/callback' => 'linebot#callback'
+  namespace :api do
+      resources :visitors, only: [:index, :create]
+   end 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
